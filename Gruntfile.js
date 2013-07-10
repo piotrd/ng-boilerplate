@@ -18,6 +18,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
+  grunt.loadNpmTasks('grunt-devserver');
 
   /**
    * Load in our build configuration file.
@@ -515,7 +516,16 @@ module.exports = function ( grunt ) {
           livereload: false
         }
       }
+    },
+
+    devserver: {
+      options: { 'type': 'http', /*(http|https defaults to http)*/
+        'port': 8000, /*(defaults to 8888)*/
+        'base': 'build', /*(defaults to .)*/
+        'cache': 'no-cache' /*(defaults to 'no-cache')*/
+      }
     }
+
   };
 
   grunt.initConfig( grunt.util._.extend( taskConfig, userConfig ) );
